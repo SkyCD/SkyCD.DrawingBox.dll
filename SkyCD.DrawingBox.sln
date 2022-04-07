@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SkyCD.DrawingBox", "SkyCD.DrawingBox.vbproj", "{A924AE08-B60B-44F4-8853-F2327974C093}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{910D7539-4CE5-49E7-AD3C-4C58DC871EEB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -22,16 +20,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\test.yml = .github\workflows\test.yml
 	EndProjectSection
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "SkyCD.Controls.DrawingBox", "SkyCD.Controls.DrawingBox\SkyCD.Controls.DrawingBox.vbproj", "{2D8C8FF4-9937-45B8-AFD7-6FB583348E72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A924AE08-B60B-44F4-8853-F2327974C093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A924AE08-B60B-44F4-8853-F2327974C093}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A924AE08-B60B-44F4-8853-F2327974C093}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A924AE08-B60B-44F4-8853-F2327974C093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D8C8FF4-9937-45B8-AFD7-6FB583348E72}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8C8FF4-9937-45B8-AFD7-6FB583348E72}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{2D8C8FF4-9937-45B8-AFD7-6FB583348E72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D8C8FF4-9937-45B8-AFD7-6FB583348E72}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

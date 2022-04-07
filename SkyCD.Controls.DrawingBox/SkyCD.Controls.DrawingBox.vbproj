@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>SkyCD.Controls</RootNamespace>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AssemblyName>SkyCD.DrawingBox</AssemblyName>
+    <Version>0.1</Version>
+    <Authors>SkyCD</Authors>
+    <Company />
+    <Description>Simple DrawingBox User Control for .NET application</Description>
+    <PackageProjectUrl>https://github.com/SkyCD/SkyCD.DrawingBox.dll</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/SkyCD/SkyCD.DrawingBox.dll</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReleaseNotes>Currently works only on Windows</PackageReleaseNotes>
+    <PackageTags>usercontrols, controls, drawing</PackageTags>
+    <OutputType>Library</OutputType>
+    <StartupObject></StartupObject>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="DrawingBox.Designer.vb">
+      <DependentUpon>DrawingBox.vb</DependentUpon>
+    </Compile>
+    <Compile Update="DrawingBox.vb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="DrawingBox.resx">
+      <DependentUpon>DrawingBox.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Drawing" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+</Project>
