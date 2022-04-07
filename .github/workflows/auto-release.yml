@@ -1,0 +1,40 @@
+name: Automatic release
+
+on:
+  schedule:
+    - cron: '21 12 28 * *'
+  workflow_dispatch:
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: release-drafter/release-drafter@v5
+        env:       
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          publish: true
+
+  build-and-publish:
+    name: Build & publish
+    runs-on: ubuntu-latest
+    needs: create-release
+    steps:
+    - name: Checkouting code...
+      uses: actions/checkout@v1
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Build
+      run: dotnet build --configuration Release
+    - name: Pack
+      run: dotnet pack --output ./artifacts --configuration Release -p:Version=$(git describe --tags --dirty | sed 's/[[:alpha:]|(|[:space:]]//g')
+
+    - name: Preparing nuget source
+      run: dotnet nuget add source --username SkyCD --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/SkyCD/index.json"
+
+    - name: Publish to GitHub packages 
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }}  --source "github"
