@@ -18,6 +18,8 @@
     <StartupObject></StartupObject>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageId>SkyCD.DrawingBox.dll</PackageId>
+    <Product />
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,6 +38,10 @@
   <ItemGroup>
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="My Project\" />
   </ItemGroup>
 
 </Project>
