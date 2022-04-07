@@ -17,6 +17,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <Authors>SkyCD</Authors>
+    <RepositoryUrl>https://github.com/SkyCD/SkyCD.DrawingBox.dll</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>usercontrol, drawingbox</PackageTags>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="System.Drawing" />
