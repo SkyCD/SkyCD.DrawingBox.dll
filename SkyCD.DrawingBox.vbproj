@@ -21,6 +21,8 @@
     <RepositoryUrl>https://github.com/SkyCD/SkyCD.DrawingBox.dll</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>usercontrol, drawingbox</PackageTags>
+    <PackageProjectUrl>https://github.com/SkyCD/SkyCD.DrawingBox.dll</PackageProjectUrl>
+    <PackageReleaseNotes>At current moment works only on Windows</PackageReleaseNotes>
   </PropertyGroup>
   <ItemGroup>
     <Import Include="System.Drawing" />
