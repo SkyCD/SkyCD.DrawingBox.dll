@@ -31,6 +31,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
     - name: Pack
+      shell: bash
       run: dotnet pack --output ./artifacts --configuration Release -p:Version=$(git describe --tags --dirty | sed 's/[[:alpha:]|(|[:space:]]//g')
 
     - name: Preparing nuget source
