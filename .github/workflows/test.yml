@@ -7,7 +7,7 @@ on:
     - '**.vb'
     - '**.vbproj'
     - '*.sln'
-    - '.github/workflow/test.yml'
+    - '.github/workflows/test.yml'
 
 jobs:
   build-and-test:
