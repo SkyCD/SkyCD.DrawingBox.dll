@@ -35,7 +35,9 @@ jobs:
       run: dotnet pack --output ./artifacts --configuration Release -p:Version=$(git describe --tags --dirty | sed 's/[[:alpha:]|(|[:space:]]//g')
 
     - name: Preparing nuget source
+      shell: bash
       run: dotnet nuget add source --username SkyCD --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/SkyCD/index.json"
 
     - name: Publish to GitHub packages 
+      shell: bash
       run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }}  --source "github"
