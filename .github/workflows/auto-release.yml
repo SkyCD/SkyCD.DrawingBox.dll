@@ -28,43 +28,24 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release
       
-    - name: Pack
-      run: dotnet pack --output ./artifacts --configuration Release -p:Version=$(git describe --tags --dirty | sed 's/[[:alpha:]|(|[:space:]]//g')            
-  
-    - name: Uploading artifact
-      uses: actions/upload-artifact@v3
+    - name: Releasing if there is something new...
+      uses: impresscms-dev/simple-autorelease-action@v0.2
+      id: autorelease
       with:
-        name: build-output
-        path: ./artifacts
+        release_branch: main
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        default_bump: minor
+        
+    - name: Generating publishing params...
+      id: params
+      run: |
+        APP_VERSION=$(echo "${{ steps.autorelease.outputs.new_version }}" | sed -r 's/v//g')
+        echo "params=-p:Version=$APP_VERSION" >> $GITHUB_OUTPUT
+      shell: bash
+      
+    - name: Pack
+      run: dotnet pack --output ./artifacts --configuration Release ${{steps.params.outputs.params}}
 
-  create-release:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Releasing if there is something new...
-        uses: impresscms-dev/simple-autorelease-action@v0.1
-        with:
-          release_branch: main
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          default_bump: patch
-
-  publish:
-    runs-on: ubuntu-latest
-    needs: create-release
-    steps:
-
-      - name: Downloading artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: build-output
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: '7.0.x'    
-    
-      - name: Preparing nuget source
-        run: dotnet nuget add source --username SkyCD --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/SkyCD/index.json"            
-    
-      - name: Publish to GitHub packages 
-        run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }}  --source "github"
+    - name: Publish to GitHub packages 
+      if: steps.autorelease.outputs.not_released == 'false'
+      run: dotnet nuget push ./artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "github"
