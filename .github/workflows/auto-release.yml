@@ -44,6 +44,7 @@ jobs:
       shell: bash
       
     - name: Pack
+      if: steps.autorelease.outputs.not_released == 'false'
       run: dotnet pack --output ./artifacts --configuration Release ${{steps.params.outputs.params}}
 
     - name: Publish to GitHub packages 
