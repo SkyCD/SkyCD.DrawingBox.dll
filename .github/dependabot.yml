@@ -1,22 +1,3 @@
+# Version updates are disabled for this archived legacy repository.
 version: 2
-
-registries:
-  skycd:
-    type: nuget-feed
-    url: https://nuget.pkg.github.com/SkyCD/index.json
-    username: SkyCD
-    password: ${{secrets.PACKAGES_PAT}}
-
-updates:
-- package-ecosystem: nuget
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 25
-  registries: 
-      - skycd
-      
-- package-ecosystem: "github-actions"
-  directory: "/"
-  schedule:
-    interval: monthly
+updates: []
