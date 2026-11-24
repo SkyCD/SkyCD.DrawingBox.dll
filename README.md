@@ -1,3 +1,6 @@
+> [!WARNING]
+> This legacy library was used by SkyCD 1.0. It is unsupported and is not used by SkyCD 3.0 or later. This repository is archived.
+
 [![GitHub version](https://badge.fury.io/gh/SkyCD%2FSkyCD.DrawingBox.dll.svg)](https://badge.fury.io/gh/SkyCD%2FSkyCD.DrawingBox.dll)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
